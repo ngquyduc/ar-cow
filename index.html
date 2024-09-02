@@ -1,40 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script>
-      var isMobile = {
-        Android: function () {
-          return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-          return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-          return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-          return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-          return (
-            isMobile.Android() ||
-            isMobile.BlackBerry() ||
-            isMobile.iOS() ||
-            isMobile.Opera() ||
-            isMobile.Windows()
-          );
-        },
-      };
-
-      if (isMobile.Android()) {
-        document.location.href = "https://ngquyduc.github.io/cow.glb";
-      } else if (isMobile.iOS()) {
-        document.location.href = "https://ngquyduc.github.io/Cow.usdz";
-      }
-    </script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   </head>
-  <body></body>
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded arjs>
+      <a-marker type="pattern" url="cow.patt">
+        <a-entity
+          position="0 0 0"
+          scale="0.05 0.05 0.05"
+          gltf-model="cow.glb"
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
